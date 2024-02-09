@@ -1,0 +1,39 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - 88:8080
+    networks:
+       app-network:
+         aliases:
+           - backend
+  db:
+    image: mysql:8.0.27
+    env_file:
+      - .env
+    ports:
+      - 3306:3306
+    volumes:
+      - mysqldb:/var/lib/mysql
+    networks:
+      app-network:
+        aliases:
+          - db
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      app-network:
+        aliases:
+          - frontend
+volumes:
+  mysqldb:
+  java-vol:
+networks:
+  app-network:
