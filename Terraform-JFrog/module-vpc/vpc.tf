@@ -18,7 +18,7 @@ resource "aws_subnet" "main-public-1" {
     map_public_ip_on_launch = "true"
     availability_zone = "${var.region}a"
     tags = {
-        Name = "tagal-eks-public-1"
+        Name = "tagal-jfrog-public-1"
         CreatedWith = "terraform"
         "kubernetes.io/role/internal-elb" = "1"
         "kubernetes.io/cluster/tagal-eks" = "${var.EKSPrivacy}"
@@ -32,7 +32,7 @@ resource "aws_subnet" "main-public-2" {
     map_public_ip_on_launch = "true"
     availability_zone = "${var.region}b"
     tags = {
-        Name = "tagal-eks-public-2"
+        Name = "tagal-jfrog-public-2"
         CreatedWith = "terraform"
         "kubernetes.io/role/internal-elb" = "1"
         "kubernetes.io/cluster/tagal-eks" = "${var.EKSPrivacy}"
@@ -46,7 +46,7 @@ resource "aws_subnet" "main-public-3" {
     map_public_ip_on_launch = "true"
     availability_zone = "${var.region}c"
     tags = {
-        Name = "tagal-eks-public-3"
+        Name = "tagal-jfrog-public-3"
         CreatedWith = "terraform"
         "kubernetes.io/role/internal-elb" = "1"
         "kubernetes.io/cluster/tagal-eks" = "${var.EKSPrivacy}"
@@ -60,7 +60,7 @@ resource "aws_subnet" "main-private-1" {
     map_public_ip_on_launch = "false"
     availability_zone = "${var.region}a"
     tags = {
-        Name = "tagal-eks-private-1"
+        Name = "tagal-jfrog-private-1"
         CreatedWith = "terraform"
         "kubernetes.io/role/internal-elb" = "1"
         "kubernetes.io/cluster/tagal-eks" = "${var.EKSPrivacy}"
@@ -74,7 +74,7 @@ resource "aws_subnet" "main-private-2" {
     map_public_ip_on_launch = "false"
     availability_zone = "${var.region}b"
     tags = {
-        Name = "tagal-eks-private-2"
+        Name = "tagal-jfrog-private-2"
         CreatedWith = "terraform"
         "kubernetes.io/role/internal-elb" = "1"
         "kubernetes.io/cluster/tagal-eks" = "${var.EKSPrivacy}"
@@ -88,7 +88,7 @@ resource "aws_subnet" "main-private-3" {
     map_public_ip_on_launch = "false"
     availability_zone = "${var.region}c"
     tags = {
-        Name = "tagal-eks-private-3"
+        Name = "tagal-jfrog-private-3"
         CreatedWith = "terraform"
         "kubernetes.io/role/internal-elb" = "1"
         "kubernetes.io/cluster/tagal-eks" = "${var.EKSPrivacy}"

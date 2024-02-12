@@ -19,7 +19,7 @@ variable "region" {
 }
 
 variable "VPCTag" {
-    default = "tagal-eks-vpc"
+    default = "tagal-jfrog-vpc"
     description = "The tag of the VPC"
 }
 
@@ -54,21 +54,21 @@ variable "cidr_private_3" {
 }
 
 variable "GWTag" {
-    default = "igw-eks-tagal"
+    default = "igw-jfrog-tagal"
     description = "Tag for the GW"
 }
 
 variable "PublicRouteTag" {
-    default = "tagal-eks-public-route-table"
+    default = "tagal-jfrog-public-route-table"
     description = "Tag for the public Route Table"
 }
 
 variable "NATTag" {
-    default = "nat-eks-tagal"
+    default = "nat-jfrog-tagal"
 }
 
 variable "PrivateRouteTag" {
-    default = "tagal-eks-private-route-table"
+    default = "tagal-jfrog-private-route-table"
     description = "Tag for the private Route Table"
 }
 
