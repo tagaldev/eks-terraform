@@ -25,7 +25,7 @@ spec:
         io.kompose.service: backend
     spec:
       containers:
-        - image: backend
+        - image: tamartayar/personal-project:react-java0mysql-backend
           name: backend
           ports:
             - containerPort: 8080

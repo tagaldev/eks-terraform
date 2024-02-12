@@ -28,6 +28,11 @@ resource "aws_iam_role_policy_attachment" "nodes-AmazonEC2ContainerRegistryReadO
   role       = aws_iam_role.node-role.name
 }
 
+resource "aws_iam_role_policy_attachment" "nodes-AmazonEBSCSIDriverPolicy" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+  role       = aws_iam_role.node-role.name
+}
+
 resource "aws_eks_node_group" "private-nodes" {
   cluster_name    = aws_eks_cluster.tagal-eks.name
   node_group_name = "tagal-private-nodes"
@@ -60,5 +65,6 @@ resource "aws_eks_node_group" "private-nodes" {
     aws_iam_role_policy_attachment.nodes-AmazonEKSWorkerNodePolicy,
     aws_iam_role_policy_attachment.nodes-AmazonEKS_CNI_Policy,
     aws_iam_role_policy_attachment.nodes-AmazonEC2ContainerRegistryReadOnly,
+    aws_iam_role_policy_attachment.nodes-AmazonEBSCSIDriverPolicy,
   ]
 }
