@@ -24,7 +24,7 @@ apt install mariadb-server mariadb-client -y
 systemctl start mariadb
 systemctl enable mariadb
 echo "deb https://releases.jfrog.io/artifactory/artifactory-debs xenial main" | tee -a /etc/apt/sources.list.d/artifactory.list
-curl -fsSL  https://releases.jfrog.io/artifactory/api/gpg/key/public%7Csudo gpg --dearmor -o /etc/apt/trusted.gpg.d/artifactory.gpg
+curl -fsSL  https://releases.jfrog.io/artifactory/api/gpg/key/public|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/artifactory.gpg
 apt update -y
 apt install jfrog-artifactory-oss
 systemctl start artifactory.service 
@@ -55,6 +55,13 @@ resource "aws_security_group" "jfrog-sg" {
   ingress {
     from_port = 8081
     to_port   = 8081
+    protocol  = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port = 8082
+    to_port   = 8082
     protocol  = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
