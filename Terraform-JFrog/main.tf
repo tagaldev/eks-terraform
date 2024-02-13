@@ -1,14 +1,9 @@
-module "module-vpc" {
-    source = "./module-vpc"
-}
-
 resource "aws_instance" "jfrog-ec2" {
   ami           = "ami-00381a880aa48c6c6"
   instance_type = "t3.small"
   key_name      = "tagal-key"
   associate_public_ip_address = true
   vpc_security_group_ids = [aws_security_group.jfrog-sg.id]
-  subnet_id = module.module-vpc.subnet_id
   root_block_device {
     volume_size = 30
   }
@@ -36,14 +31,11 @@ EOF
   tags = {
     Name = "EC2-JFrog-tagal"
   }
-
-  depends_on = [module.module-vpc.aws_vpc]
 }
 
 resource "aws_security_group" "jfrog-sg" {
   name        = "tagal-jfrog-security-group"
   description = "Security group for JFrog service"
-  vpc_id = module.module-vpc.vpc_id
 
   ingress {
     from_port = 22
@@ -79,6 +71,4 @@ resource "aws_security_group" "jfrog-sg" {
     protocol  = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
-  depends_on = [module.module-vpc.aws_vpc]
 }
