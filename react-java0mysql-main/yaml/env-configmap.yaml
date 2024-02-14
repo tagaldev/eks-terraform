@@ -6,5 +6,5 @@ kind: ConfigMap
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: db-env
+    service: db-env
   name: env
