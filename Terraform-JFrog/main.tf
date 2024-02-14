@@ -1,6 +1,6 @@
 resource "aws_instance" "jfrog-ec2" {
   ami           = "ami-00381a880aa48c6c6"
-  instance_type = "t3.small"
+  instance_type = "t3.xlarge"
   key_name      = "tagal-key"
   associate_public_ip_address = true
   vpc_security_group_ids = [aws_security_group.jfrog-sg.id]
