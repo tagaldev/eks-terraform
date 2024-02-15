@@ -1,0 +1,6 @@
+helm install kube-prometheus-stack . -n prometheus
+helm delete kube-prometheus-stack -n prometheus
+
+Grafana username and password:
+admin
+prom-operator

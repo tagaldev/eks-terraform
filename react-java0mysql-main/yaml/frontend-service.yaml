@@ -7,6 +7,6 @@ spec:
     service: frontend
   ports:
     - protocol: TCP
-      port: 80 # The port that I need to type in my browser
+      port: 3000 # The port that I need to type in my browser
       targetPort: 3000 # The port which the app works on
   type: LoadBalancer
