@@ -18,10 +18,183 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 29,
     "links": [],
     "liveNow": false,
     "panels": [
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "description": "The memory usage in percentage of all nodes in the cluster.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "null": {
+                    "index": 0,
+                    "text": "N/A"
+                  }
+                },
+                "type": "value"
+              }
+            ],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "#EAB839",
+                  "value": 65
+                },
+                {
+                  "color": "red",
+                  "value": 90
+                }
+              ]
+            },
+            "unit": "percent",
+            "unitScale": true
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "id": 10,
+        "options": {
+          "minVizHeight": 75,
+          "minVizWidth": 75,
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "sizing": "auto"
+        },
+        "pluginVersion": "10.3.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "prometheus"
+            },
+            "editorMode": "code",
+            "expr": "(sum (node_memory_MemTotal_bytes) - sum (node_memory_MemAvailable_bytes)) / sum (node_memory_MemTotal_bytes) * 100",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Memory Usage",
+        "type": "gauge"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "description": "The average CPU usage of all the nodes in the cluster.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "links": [],
+            "mappings": [
+              {
+                "options": {
+                  "null": {
+                    "index": 0,
+                    "text": "N/A"
+                  }
+                },
+                "type": "value"
+              }
+            ],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "#EAB839",
+                  "value": 65
+                },
+                {
+                  "color": "red",
+                  "value": 90
+                }
+              ]
+            },
+            "unit": "percent",
+            "unitScale": true
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        },
+        "id": 9,
+        "options": {
+          "minVizHeight": 75,
+          "minVizWidth": 75,
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "sizing": "auto"
+        },
+        "pluginVersion": "10.3.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "prometheus"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "avg(100 - (avg by (node) (rate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100))",
+            "format": "time_series",
+            "instant": false,
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "CPU Usage",
+        "type": "gauge"
+      },
       {
         "collapsed": false,
         "datasource": {
@@ -32,7 +205,7 @@
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 0
+          "y": 7
         },
         "id": 5,
         "panels": [],
@@ -68,7 +241,7 @@
           "h": 7,
           "w": 24,
           "x": 0,
-          "y": 1
+          "y": 8
         },
         "hiddenSeries": false,
         "id": 1,
@@ -173,7 +346,7 @@
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 8
+          "y": 15
         },
         "id": 6,
         "panels": [],
@@ -204,7 +377,7 @@
           "h": 7,
           "w": 24,
           "x": 0,
-          "y": 9
+          "y": 16
         },
         "id": 2,
         "interval": "1m",
@@ -436,7 +609,7 @@
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 16
+          "y": 23
         },
         "id": 7,
         "panels": [],
@@ -472,7 +645,7 @@
           "h": 7,
           "w": 24,
           "x": 0,
-          "y": 17
+          "y": 24
         },
         "hiddenSeries": false,
         "id": 3,
@@ -577,7 +750,7 @@
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 24
+          "y": 31
         },
         "id": 8,
         "panels": [],
@@ -608,7 +781,7 @@
           "h": 7,
           "w": 24,
           "x": 0,
-          "y": 25
+          "y": 32
         },
         "id": 4,
         "interval": "1m",
@@ -915,7 +1088,7 @@
       "list": [
         {
           "current": {
-            "selected": false,
+            "selected": true,
             "text": "default",
             "value": "default"
           },
@@ -963,12 +1136,12 @@
           "current": {
             "selected": true,
             "text": [
-              "ip-10-0-1-65.eu-north-1.compute.internal",
-              "ip-10-0-2-34.eu-north-1.compute.internal"
+              "ip-10-0-2-43.eu-north-1.compute.internal",
+              "ip-10-0-3-221.eu-north-1.compute.internal"
             ],
             "value": [
-              "ip-10-0-1-65.eu-north-1.compute.internal",
-              "ip-10-0-2-34.eu-north-1.compute.internal"
+              "ip-10-0-2-43.eu-north-1.compute.internal",
+              "ip-10-0-3-221.eu-north-1.compute.internal"
             ]
           },
           "datasource": {
@@ -1023,8 +1196,8 @@
       ]
     },
     "timezone": "utc",
-    "title": "Kubernetes Nodes and Pods",
-    "uid": "200ac8fdbfbb74b39aff88118e4d1c2",
-    "version": 2,
+    "title": "tagal-EKS-Dashboard",
+    "uid": "200ac8fdbfbb74b39aff88118e4d1c2d",
+    "version": 1,
     "weekStart": ""
   }

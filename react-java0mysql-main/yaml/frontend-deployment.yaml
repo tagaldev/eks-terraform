@@ -19,7 +19,7 @@ spec:
         service: frontend
     spec:
       containers:
-        - image: tamartayar/personal-project:react-java0mysql-frontend
+        - image: tagal.jfrog.io/tagal/frontend:0.1
           name: frontend
           ports:
             - containerPort: 3000
