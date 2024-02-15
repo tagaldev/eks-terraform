@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: react
+spec:
+  destination:
+    name: ''
+    namespace: react
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: react-java0mysql-main/yaml
+    repoURL: 'https://github.com/tagaldev/eks-terraform.git'
+    targetRevision: HEAD
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
