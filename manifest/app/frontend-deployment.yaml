@@ -19,7 +19,7 @@ spec:
         service: frontend
     spec:
       containers:
-        - image: tagal.jfrog.io/tagal/frontend:55
+        - image: tagal.jfrog.io/tagal/frontend:56
           name: frontend
           ports:
             - containerPort: 3000
