@@ -31,7 +31,7 @@ spec:
                 configMapKeyRef:
                   key: MYSQL_ROOT_PASSWORD
                   name: env
-          image: tamartayar/personal-project:mysql-db
+          image: tagal.jfrog.io/tagal/backend:56
           name: db
           ports:
             - containerPort: 3306
